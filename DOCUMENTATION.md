@@ -2,7 +2,7 @@
 
 
 ## Base URL
-The base URL for this API is http://example.com/api/
+The base URL for this API is https://folafolu.pythonanywhere.com/
 
 
 ## Authentication

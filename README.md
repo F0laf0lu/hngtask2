@@ -15,7 +15,7 @@
 
 To run the API locally, follow these steps:
 
-- Clone the repository: `git clone https://github.com/yourusername/smart-learning-api.git`
+- Clone the repository: `git clone https://github.com/F0laf0lu/hngtask2.git`
 -  Create a virtual environment: `python -m venv venv`
 -  Activate the virtual environment: `source venv/bin/activate`
 -  Install dependencies: `pip install -r requirements.txt`

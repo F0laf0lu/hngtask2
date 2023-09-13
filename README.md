@@ -1,4 +1,4 @@
-## CRUD API For Person Resource
+# CRUD API For Person Resource
 
 ### Overview
 
@@ -33,5 +33,5 @@ To run the API locally, follow these steps:
     ```
 ## API Endpoints and Usage
 
-Visit the Doumentation file for all the availabel endpoints and how to use them
+Visit the [Documentation](https://github.com/F0laf0lu/hngtask2/blob/main/DOCUMENTATION.md) file for all the available api endpoints and how to use them
 

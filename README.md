@@ -23,9 +23,11 @@ track (string): The track of the person.
 
 Sample Request:
 
-```{
+```json
+{
     "name": "John",
     "track": "backend",
-}```
+}
+```
 
 

@@ -1,4 +1,4 @@
-# API Documentation for Person Resource
+# API Documentation 
 
 
 ## Base URL
@@ -11,17 +11,17 @@ This API does not require authentication for the endpoints mentioned below.
 ## Endpoints
 
 ### Create a New Person
-Endpoint `POST /api/`
+Endpoint : `POST /api/`
 
-Create a new person and add their details to the database.
+Creates a new person and add their details to the database.
 
-JSON object containing the following fields:
+Request body : JSON object containing the following fields:
 
-name (string) - The name of the person.
+- name (string) - The name of the person.
 
-track (string) - The track of the person.
+- track (string) - The track of the person.
 
-Sample Request
+##### Sample Request:
 
 ```json
 {
@@ -29,7 +29,7 @@ Sample Request
     "track": "backend",
 }
 ```
-Response (HTTP 201 Created)
+##### Response (HTTP 201 Created)
 ```json
 {   
     "id": 1,
@@ -40,17 +40,19 @@ Response (HTTP 201 Created)
 
 ## Retrieve Person Details
 
-Endpoint GET /api/<user_id>/
+Endpoint : 'GET /api/<user_id>/'
 
-Retrieve details of a person with the specified `id`
+Retrieves details of a person with the specified `user_id`
 
-Parameters
-    `user_id` (integer): The unique ID of the person you want to retrieve.
+Parameters:
 
-Sample Request 
-    ` GET /api/1/ `
+    - `user_id` (integer): The unique ID of the person you want to retrieve.
 
-Response (HTTP 200 OK):
+##### Sample Request:
+
+    `GET /api/1/ `
+
+##### Response (HTTP 200 OK):
 ```json
 {   
     "id": 1,
@@ -61,23 +63,26 @@ Response (HTTP 200 OK):
 
 ## Update Person Details
 
-Endpoint `PUT /api/<user_id>/`
+Endpoint :`PUT /api/<user_id>/`
 
 Update details of an existing person with the specified id
 
-Parameters
-    `user_id` (integer): The unique ID of the person you want to retrieve.
+Parameters:
 
-Sample Request 
+    - `user_id` (integer): The unique ID of the person you want to retrieve.
+
+##### Sample Request: 
+
     ` GET /api/1/ `
 
-Request Body
+- Request Body:
     JSON object containing the following fields (you can update one or more fields):
-    name (string) - The name of the person.
 
-    track (string) - The track of the person.
+    - name (string) - The name of the person.
 
-Sample Request
+    - track (string) - The track of the person.
+
+##### Sample Request
 
 ```json
 {
@@ -86,7 +91,7 @@ Sample Request
 }
 ```
 
-Response (HTTP 200 OK):
+##### Response (HTTP 200 OK):
 ```json
 {   
     "id": 1,
@@ -97,17 +102,19 @@ Response (HTTP 200 OK):
 
 ## Delete a Person
 
-Endpoint: `DELETE /api/<user_id>/`
+Endpoint : `DELETE /api/<user_id>/`
 
 Remove a person with the specified ID from the database.
 
 Parameters:
-    `user_id` (integer) - The unique ID of the person you want to delete.
 
-Sample Request
+    - `user_id` (integer) - The unique ID of the person you want to delete.
+
+##### Sample Request:
+
     `DELETE /api/1/`
 
-Response (HTTP 204 No Content)
+##### Response (HTTP 204 No Content)
 
 (No response content; the person has been deleted)
 

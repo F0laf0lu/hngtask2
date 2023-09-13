@@ -44,15 +44,15 @@ Endpoint : `GET /api/<user_id>/`
 
 Retrieves details of a person with the specified `user_id`
 
-Parameters:
+Parameters :
 
-    - user_id (integer): The unique ID of the person you want to retrieve.
+- `user_id` (integer): The unique ID of the person you want to retrieve.
 
-##### Sample Request:
+#### Sample Request :
 
-    `GET /api/1/`
+`GET /api/1/`
 
-##### Response (HTTP 200 OK):
+#### Response (HTTP 200 OK) :
 ```json
 {   
     "id": 1,
@@ -63,26 +63,23 @@ Parameters:
 
 ## Update Person Details
 
-Endpoint :`PUT /api/<user_id>/`
+Endpoint : `PUT /api/<user_id>/`
 
-Update details of an existing person with the specified id
+Update details of an existing person with the specified `user_id`
 
-Parameters:
+Parameters :
 
-    - user_id (integer): The unique ID of the person you want to retrieve.
+- `user_id` (integer): The unique ID of the person you want to retrieve.
 
-##### Sample Request: 
+Request Body : JSON object containing the following fields (you can update one or more fields):
 
-    ` GET /api/1/ `
+- name (string) - The name of the person.
 
-- Request Body:
-    JSON object containing the following fields (you can update one or more fields):
+- track (string) - The track of the person.
 
-    - name (string) - The name of the person.
+#### Sample Request `PUT /api/1/` :
 
-    - track (string) - The track of the person.
-
-##### Sample Request
+Request body :
 
 ```json
 {
@@ -91,7 +88,7 @@ Parameters:
 }
 ```
 
-##### Response (HTTP 200 OK):
+#### Response (HTTP 200 OK) :
 ```json
 {   
     "id": 1,
@@ -104,20 +101,23 @@ Parameters:
 
 Endpoint : `DELETE /api/<user_id>/`
 
-Remove a person with the specified ID from the database.
+Remove a person with the specified `user_id` from the database.
 
-Parameters:
+Parameters :
 
 - `user_id` (integer) - The unique ID of the person you want to delete.
 
-##### Sample Request:
+#### Sample Request:
 
 `DELETE /api/1/`
 
-##### Response (HTTP 204 No Content)
+#### Response (HTTP 204 No Content)
 
 (No response content; the person has been deleted)
 
+## Limitations
+
+- It is not possible to create or update multiple persons at the same time using the api
 
 ## Conclusion
 This API allows you to perform CRUD operations on a "person" resource. Make sure to replace http://example.com/api/ with your actual API URL when making requests.

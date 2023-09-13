@@ -109,7 +109,7 @@ Sample Request
 
 Response (HTTP 204 No Content)
 
-(No response content; the person has been deleted)
+(No response content, the person has been deleted)
 
 
 ## Conclusion

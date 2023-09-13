@@ -40,17 +40,17 @@ Request body : JSON object containing the following fields:
 
 ## Retrieve Person Details
 
-Endpoint : 'GET /api/<user_id>/'
+Endpoint : `GET /api/<user_id>/`
 
 Retrieves details of a person with the specified `user_id`
 
 Parameters:
 
-    - `user_id` (integer): The unique ID of the person you want to retrieve.
+    - user_id (integer): The unique ID of the person you want to retrieve.
 
 ##### Sample Request:
 
-    `GET /api/1/ `
+    `GET /api/1/`
 
 ##### Response (HTTP 200 OK):
 ```json
@@ -69,7 +69,7 @@ Update details of an existing person with the specified id
 
 Parameters:
 
-    - `user_id` (integer): The unique ID of the person you want to retrieve.
+    - user_id (integer): The unique ID of the person you want to retrieve.
 
 ##### Sample Request: 
 
@@ -108,11 +108,11 @@ Remove a person with the specified ID from the database.
 
 Parameters:
 
-    - `user_id` (integer) - The unique ID of the person you want to delete.
+- `user_id` (integer) - The unique ID of the person you want to delete.
 
 ##### Sample Request:
 
-    `DELETE /api/1/`
+`DELETE /api/1/`
 
 ##### Response (HTTP 204 No Content)
 

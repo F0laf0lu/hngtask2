@@ -120,4 +120,4 @@ Parameters :
 - It is not possible to create or update multiple persons at the same time using the api
 
 ## Conclusion
-This API allows you to perform CRUD operations on a "person" resource. Make sure to replace http://example.com/api/ with your actual API URL when making requests.
+This API allows you to perform CRUD operations on a "person" resource.

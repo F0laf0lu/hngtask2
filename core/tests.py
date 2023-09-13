@@ -46,6 +46,7 @@ class API_Endpoints(TestCase):
         self.assertFalse(Person.objects.filter(name=' ', track='backend').exists())
 
     # DELETE
+
     def test_delete_with_valid_id_api(self):
         self.person1 = Person.objects.create(name='John Doe', track='backend')
         url = reverse('person-detail', kwargs={'id':self.person1.id})
@@ -59,6 +60,7 @@ class API_Endpoints(TestCase):
         self.assertEqual(response.status_code, 404)
 
     # READ
+    
     def test_read_details_with_valid_id(self):
         self.person1 = Person.objects.create(name='John Doe', track='backend')
         url = reverse('person-detail', kwargs={'id':self.person1.id})

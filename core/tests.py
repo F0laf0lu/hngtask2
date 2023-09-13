@@ -1,10 +1,12 @@
 from django.test import TestCase
-from django.urls import reverse
-from core.views import persons, person_detail
+from rest_framework.test import APITestCase
+from django.urls import reverse, resolve
 from core.models import Person
+from core.views import PersonViewSet
+import json
 
 # Create your tests here.
-class All_urls_Test(TestCase):
+class All_urls_Test(APITestCase):
     def test_personsview_url(self):
         url = reverse('person-list')
         response = self.client.get(url)
@@ -14,16 +16,16 @@ class All_urls_Test(TestCase):
         self.person1 = Person.objects.create(name='John Doe', track='backend')
 
         # if ID exists
-        url = reverse('person-detail', kwargs={'id': self.person1.id})
+        url = reverse('person-detail', kwargs={'pk': self.person1.id})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
 
         #if ID doesn't exist
-        url = reverse('person-detail', kwargs={'id': 100})
+        url = reverse('person-detail', kwargs={'pk': 100})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
 
-class API_Endpoints(TestCase):
+class API_Endpoints(APITestCase):
     # CREATE
     def test_valid_Post_data(self):
         data = {
@@ -49,13 +51,13 @@ class API_Endpoints(TestCase):
 
     def test_delete_with_valid_id_api(self):
         self.person1 = Person.objects.create(name='John Doe', track='backend')
-        url = reverse('person-detail', kwargs={'id':self.person1.id})
+        url = reverse('person-detail', kwargs={'pk':self.person1.id})
         response = self.client.delete(url)
         self.assertEqual(response.status_code, 204)
-        self.assertFalse(Person.objects.filter(id=self.person1.id).exists())
+        self.assertFalse(Person.objects.filter(pk=self.person1.id).exists())
 
     def test_delete_with_invalid_id_api(self):
-        url = reverse('person-detail', kwargs={'id':100})
+        url = reverse('person-detail', kwargs={'pk':100})
         response = self.client.delete(url)
         self.assertEqual(response.status_code, 404)
 
@@ -63,7 +65,7 @@ class API_Endpoints(TestCase):
     
     def test_read_details_with_valid_id(self):
         self.person1 = Person.objects.create(name='John Doe', track='backend')
-        url = reverse('person-detail', kwargs={'id':self.person1.id})
+        url = reverse('person-detail', kwargs={'pk':self.person1.id})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 200)
         data = response.json()
@@ -71,20 +73,18 @@ class API_Endpoints(TestCase):
         self.assertEqual(data['track'], 'backend')
     
     def test_read_details_with_invalid_id(self):
-        url = reverse('person-detail', kwargs={'id':100})
+        url = reverse('person-detail', kwargs={'pk':100})
         response = self.client.get(url)
         self.assertEqual(response.status_code, 404)
 
     # UPDATE
     def test_update_details_with_valid_id(self):
         self.person1 = Person.objects.create(name='John Doe', track='backend')
-
-        data = {
+        data = json.dumps({
             'name': 'Updated Name',
             'track': 'Mobile',
-        }
-
-        url = reverse('person-detail', kwargs={'id':self.person1.id})
+        })
+        url = reverse('person-detail', kwargs={'pk':self.person1.id})
         response = self.client.put(url, data, content_type='application/json')
         self.assertEqual(response.status_code, 200) 
         updated_person = Person.objects.get(id=self.person1.id)
@@ -97,8 +97,8 @@ class API_Endpoints(TestCase):
                 'name': '',
                 'track': 'Mobile',
             }
-            url = reverse('person-detail', kwargs={'id':self.person1.id})
+            url = reverse('person-detail', kwargs={'pk':self.person1.id})
             response = self.client.put(url, data, content_type='application/json')
             self.assertEqual(response.status_code, 400)  
-            updated_person = Person.objects.get(id=self.person1.id)
+            updated_person = Person.objects.get(pk=self.person1.id)
             self.assertNotEqual(updated_person.name, '')
